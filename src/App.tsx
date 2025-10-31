@@ -1,10 +1,4 @@
-import { useState, useEffect } from "react";
 import { Route, Routes, useParams } from "react-router-dom";
-import { MainLayout } from "./components/layouts/MainLayout";
-import DashboardPage from "./features/dashboard/pages/DashboardPage";
-import TcListPage from "./features/tcList/page/TcListPage";
-import TcEditPage from "./features/tcEdit/pages/TcEditPage.tsx";
-import TrashPage from "./features/trash/page/TrashPage.tsx";
 
 // mob
 import { MobMainLayout } from "./components/layoutsMob/layout/MobMainLayout.tsx";
@@ -13,9 +7,7 @@ import MobTcListPage from "./mob/tcList/page/TcListPage";
 import MobTrashPage from "./mob/tcTrash/page/TrashPage.tsx";
 import MobSamplePage from "./mob/view/pages/SamplePage";
 import MobViewPage from "./mob/view/pages/ViewPage";
-import { TrashDetailPage } from "./features/trash/page/TrashDetailPage.tsx";
 import { NotFoundPage } from "./pages/NotFoundPage.tsx";
-import { TcSharePage } from "./features/share/pages/TcSharePage.tsx";
 import { Loading } from "./components/common/loading/Loading.tsx";
 import { useIsMobile } from "./hooks/useIsMobile.ts";
 
@@ -38,20 +30,21 @@ function App() {
             <Route path="/trash" element={<MobTrashPage />} />
             <Route path="sample/:id" element={<MobSamplePageWrapper />} />
             <Route path="view/:id?" element={<MobViewPage />} />
-            <Route path="/share/tc/:tcSeq" element={<TcSharePage />} />
           </Route>
         </>
       ) : (
         <>
-          <Route path="/" element={<MainLayout />}>
-            <Route index element={<DashboardPage />} />
-            <Route path="/tcList" element={<TcListPage />} />
-            <Route path="/trash" element={<TrashPage />} />
-          </Route>
-          <Route path="/trash/:tcSeq" element={<TrashDetailPage />} />
-          <Route path="/tcEdit/:tcSeq" element={<TcEditPage />} />
-          <Route path="/share/tc/:tcSeq" element={<TcSharePage />} />
         </>
+        // <>
+        //   <Route path="/" element={<MainLayout />}>
+        //     <Route index element={<DashboardPage />} />
+        //     <Route path="/tcList" element={<TcListPage />} />
+        //     <Route path="/trash" element={<TrashPage />} />
+        //   </Route>
+        //   <Route path="/trash/:tcSeq" element={<TrashDetailPage />} />
+        //   <Route path="/tcEdit/:tcSeq" element={<TcEditPage />} />
+        //   <Route path="/share/tc/:tcSeq" element={<TcSharePage />} />
+        // </>
       )}
       {/* 임시 추가 */}
       <Route path="/loading" element={<Loading />} />

@@ -32,7 +32,7 @@ export const Count = ({ prompt, urls, screenshots, setCountOpen }: CountProps) =
       toastOpen("경고", "생성 개수를 설정해주세요.", "N");
     } else {
       console.log(prompt, urls, screenshots, count);
-      const tcCount = String(count);
+      // const tcCount = String(count);
       // generateTc.mutate({ prompt, tcCount});
       navigate("/view", { replace: true });
     }

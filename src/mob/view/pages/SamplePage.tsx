@@ -21,12 +21,13 @@ export default function SamplePage({ path }: PathType) {
   const [items] = useState<TcDetail[]>(
     Array.from({ length: 25 }, (_, i) => ({
       tcSeq: i,
-      serviceName: "로그인",
-      testCaseName: `로그인 테스트 ${i + 1}`,
+      serviceName: `AD-로그인-${String(i + 1).padStart(3, "0")}`,
+      testcaseName: `로그인 테스트 ${i + 1}`,
       priority: i % 3 === 0 ? "HIGH" : "LOW",
-      testStep: `1. 화면 진입\n2. 입력\n3. 클릭 (${i + 1})`,
       precondition: `구매 내역이 있는 계정 로그인 상태`,
+      testStep: `1. 화면 진입\n2. 입력\n3. 클릭 (${i + 1})`,
       expectedResult: `정상 로그인 처리 (예상결과 ${i + 1})`,
+      checked: false,
     })) as TcDetail[],
   );
 

@@ -20,14 +20,14 @@ export default function ViewPage() {
   // ⚡ 더미 데이터 생성 (추후 삭제) --------------------------------------------------------------
   const [items] = useState<TcDetail[]>(
     Array.from({ length: 25 }, (_, i) => ({
-      id: i,
-      tcId: `AD-로그인-${String(i + 1).padStart(3, "0")}`,
-      serviceName: "로그인",
-      tcName: `로그인 테스트 ${i + 1}`,
+      tcSeq: i,
+      serviceName: `AD-로그인-${String(i + 1).padStart(3, "0")}`,
+      testcaseName: `로그인 테스트 ${i + 1}`,
       priority: i % 3 === 0 ? "HIGH" : "LOW",
+      precondition: `구매 내역이 있는 계정 로그인 상태`,
       testStep: `1. 화면 진입\n2. 입력\n3. 클릭 (${i + 1})`,
-      preCondition: `구매 내역이 있는 계정 로그인 상태`,
       expectedResult: `정상 로그인 처리 (예상결과 ${i + 1})`,
+      checked: false,
     })) as TcDetail[],
   );
 
@@ -45,7 +45,7 @@ export default function ViewPage() {
     range,
     listRef,
     filteredItemCnt,
-  } = useListController<TcItem>(items);
+  } = useListController<TcDetail>(items);
 
   // 상단 제목 세팅 ------------------------------------------------------------------------------
   useEffect(() => {
@@ -82,7 +82,7 @@ export default function ViewPage() {
           const addPadding = isFifthItem || isLast;
 
           return (
-            <div key={item.id} className={addPadding ? "pb-20" : ""}>
+            <div key={item.tcSeq} className={addPadding ? "pb-20" : ""}>
               <TestCase item={item} />
             </div>
           );

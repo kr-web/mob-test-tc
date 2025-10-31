@@ -2,14 +2,10 @@ import TimeIcon from "@/assets/icons/common/clock.svg?react-no-replace";
 import FlashIcon from "@/assets/icons/tcList/item/flash.svg?react";
 import TrashIcon from "@/assets/icons/common/trash.svg?react";
 
+import type { TcList } from "@/types/testcase";
+
 interface TcItemListProps {
-  item: {
-    id: number;
-    name: string;
-    date: string;
-    pinned?: boolean;
-    checked: boolean;
-  };
+  item: TcList;
   onOpen: () => void;
 }
 

@@ -5,14 +5,10 @@ import TimeIcon from "@/assets/icons/common/clock.svg?react-no-replace";
 import FlashIcon from "@/assets/icons/tcList/item/flash.svg?react";
 import ShareIcon from "@/assets/icons/tclist/item/clip.svg?react-no-replace";
 
+import type { TcList } from "@/types/testcase";
+
 interface TcItemListProps {
-  item: {
-    id: number;
-    name: string;
-    date: string;
-    pinned?: boolean;
-    checked: boolean;
-  };
+  item: TcList;
   toastOpen: (title: string, content: string, type: "Y" | "W" | "N") => void;
 }
 
@@ -33,7 +29,7 @@ export const TcItemList = ({ item, toastOpen }: TcItemListProps) => {
       <div className="flex justify-between gap-2">
         <button
           className="flex h-[42px] w-1/2 items-center justify-center gap-2 rounded-lg bg-primary-gray text-[14px] tracking-[-.28px] text-secondary-darkgray3"
-          onClick={() => navigate(`/view/${item.id}`)}
+          onClick={() => navigate(`/view/${item.tcSeq}`)}
         >
           <FlashIcon className="h-5 w-5 text-secondary-gray2" />
           입장하기

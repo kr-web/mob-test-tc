@@ -25,7 +25,7 @@ function TrashPage() {
   // ⚡ 더미 데이터 생성 (추후 삭제) --------------------------------------------------------------
   const [items, setItems] = useState<TcList[]>(
     Array.from({ length: 21 }, (_, i) => ({
-      id: i + 1,
+      tcSeq: i + 1,
       name: `AD-로그인-${String(i + 1).padStart(3, "0")}_로그인테스트케이스_${String(i + 1)}`,
       date: "2025.09.18 AM 09:24:32",
       pinned: false,
@@ -63,7 +63,7 @@ function TrashPage() {
     if (!selectedItem) return;
 
     // 리스트에서 제거
-    setItems((prev) => prev.filter((item) => item.id !== selectedItem.id));
+    setItems((prev) => prev.filter((item) => item.tcSeq !== selectedItem.tcSeq));
 
     // 토스트
     toastOpen("복원 완료", "복원된 TC는 Testcase 메뉴에서\n확인할 수 있어요", "Y");
@@ -94,7 +94,7 @@ function TrashPage() {
             const addPadding = isFifthItem || isLast;
 
             return (
-              <div key={item.id} className={addPadding ? "pb-20" : ""}>
+              <div key={item.tcSeq} className={addPadding ? "pb-20" : ""}>
                 <TcTrashList
                   item={item}
                   onOpen={() => {
